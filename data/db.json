@@ -1,0 +1,20 @@
+{
+    "noticias": [
+        {
+            "id": 1,
+            "titulo": "graduação com desconto",
+            "texto": "Bolsa de estudos para graduação, pós-graduação e cursos profissionalizantes com até 80% de desconto na mensalidade para estudar presencial e EAD! Confira!"
+        },
+        {
+           "id": 2,
+           "titulo": "eventos gratuitos",
+           "texto": "A faculdade realiza vários eventos gratuitos culturais e tudo mais" 
+        },
+        {
+            "id": 3,
+            "titulo": "Ação de fim de ano",
+            "texto": "Ação solidaria de final de ano"    
+        }
+
+    ]
+}
