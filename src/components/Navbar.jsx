@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Button, Box, IconButton, Menu, MenuItem, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useAuth } from '../context/AuthContext';  
 
 const Navbar = () => {
-  const { userType } = useAuth(); 
+  const [userType, setUserType] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
+
+  useEffect(() => {
+    const storedUserType = localStorage.getItem('userType'); 
+    if (storedUserType) {
+      setUserType(JSON.parse(storedUserType)); 
+    }
+  }, []);
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);

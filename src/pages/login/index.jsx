@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';  
 import './styles.css';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-  const { login } = useAuth();  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,11 +16,13 @@ const Login = () => {
     e.preventDefault();
 
     if (credentials.username === 'admin' && credentials.password === 'admin') {
-      login('admin'); 
+      localStorage.setItem('userType', JSON.stringify('admin'));
+      navigate('/initial');
+    } else if (credentials.username === 'professor' && credentials.password === 'professor') {
+      localStorage.setItem('userType', JSON.stringify('professor'));
       navigate('/initial');
     } else {
-      login('student');  
-      navigate('/initial');
+      setErrorMessage('Usuário ou senha inválidos');
     }
   };
 
@@ -55,9 +55,7 @@ const Login = () => {
           />
         </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <button type="submit" className="login-button">
-          Entrar
-        </button>
+        <button type="submit" className="login-button">Entrar</button>
       </form>
     </div>
   );
